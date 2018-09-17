@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS Fundamentals</title>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+      angular.module("app", []);
+      
+      angular.module('app').controller('MyController', [
+        '$scope',
+        function($scope) {
+          $scope.number = 10;
+          $scope.inc = function() {
+            $scope.number++;
+          };
+        }
+      ]);
+    </script>
+  </head>
+  <body>
+    <div ng-controller="MyController">
+      <h1>{{ number }}</h1>
+      <input name="number" ng-model="number" />
+      <button type="button" name="button" ng-click="inc()">Inc</button>
+    </div>
+  </body>
+</html>
