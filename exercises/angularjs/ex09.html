@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS Fundamentals</title>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+      angular.module('app', []);
+      
+      angular.module('app').component('field', {
+        bindings: {
+          id: '@',
+          label: '@',
+          model: '='
+        },
+        template: `
+          <label for="{{ $ctrl.id }}">{{ $ctrl.label }}</label>
+          <input id="{{ $ctrl.id }}" ng-model='$ctrl.model'>
+        `
+      });
+      
+      angular.module('app').controller('MyController', function() {
+        const self = this;
+        self.name = "Anonymous";
+      });
+    </script>
+  </head>
+  <body>
+    <div ng-controller="MyController as ctrl">
+      <h1>{{ ctrl.name }}</h1>
+      <field id="name" label="Name" model="ctrl.name"></field>
+    </div>
+  </body>
+</html>
